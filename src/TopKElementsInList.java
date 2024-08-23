@@ -12,11 +12,11 @@ public class TopKElementsInList {
             map.put(i, map.getOrDefault(i, 0)+1);
 
         PriorityQueue<Map.Entry<Integer, Integer>> minHeap  =
-                new PriorityQueue<>(Comparator.comparingInt(Map.Entry::getValue));
+                new PriorityQueue<>((a,b)-> a.getValue() - b.getValue());
 
         for(Map.Entry<Integer, Integer> entry: map.entrySet()){
             minHeap.add(entry);
-            if(minHeap.size()>2){
+            if(minHeap.size()>k){
                 minHeap.poll();
             }
         }
@@ -30,6 +30,6 @@ public class TopKElementsInList {
     }
 
     public static void main(String[] args) {
-        topKFrequent(new int[]{1,2,2,3,3,3}, 2);
+        topKFrequent(new int[]{3,0,1,0}, 1);
     }
 }
