@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * Leetcode: 242
+ */
 public class AnagramGroups {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, Integer> map = new HashMap<>();

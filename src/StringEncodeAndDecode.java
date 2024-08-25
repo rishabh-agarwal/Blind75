@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Leetcode: 659
+ */
 public class StringEncodeAndDecode {
     public static String encode(List<String> strs) {
         StringBuilder encodeString = new StringBuilder();
