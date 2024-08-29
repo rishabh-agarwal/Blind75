@@ -7,29 +7,25 @@ import java.util.*;
  **/
 public class LongestRepeatingSubstringWithReplacement {
     public static int characterReplacement(String s, int k) {
-        Map<Character, Integer> map = new HashMap<>();
+        HashMap<Character, Integer> map = new HashMap<>();
         int maxFreq = 0;
-        int maxLength = 0;
+        int maxLen = 0;
         int left = 0;
 
-        for (int right = 0; right < s.length(); right++) {
-            char currentChar = s.charAt(right);
-            map.put(currentChar, map.getOrDefault(currentChar, 0) + 1);
-            maxFreq = Math.max(maxFreq, map.get(currentChar));
+        for(int right=0; right<s.length(); right++){
+            char currChar = s.charAt(right);
+            map.put(currChar, map.getOrDefault(currChar, 0)+1);
+            maxFreq = Math.max(maxFreq, map.get(currChar));
 
-            // If the current window size minus the frequency of the most frequent character is greater than k,
-            // shrink the window from the left
-            while ((right - left + 1) - maxFreq > k) {
-                char leftChar = s.charAt(left);
-                map.put(leftChar, map.get(leftChar) - 1);
+            //max condition
+            while((right-left+1) - maxFreq > k){
+                map.put(s.charAt(left), map.get(currChar) - 1);
                 left++;
             }
 
-            // Update the maximum length of the valid window
-            maxLength = Math.max(maxLength, right - left + 1);
+            maxLen = Math.max(right-left+1, maxFreq);
         }
-
-        return maxLength;
+        return maxLen;
     }
 
     public static void main(String[] args) {
