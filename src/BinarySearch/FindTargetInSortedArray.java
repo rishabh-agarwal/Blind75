@@ -21,7 +21,7 @@ public class FindTargetInSortedArray {
                 } else {
                     right = mid-1;
                 }
-            }else{ //if(nums[left] >= nums[mid])
+            }else{
                 if(target < nums[mid] || target > nums[right]){
                     right = mid - 1;
                 }  else{
