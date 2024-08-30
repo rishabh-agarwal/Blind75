@@ -13,12 +13,12 @@ public class FindMinimumInRotatedSortedArray {
         while(l<=r){
             int mid = (l+r)/2;
 
-            if(nums[r]>nums[l]) return nums[l];
+            if(nums[r]>=nums[l]) return nums[l];
 
-            if(nums[r]<nums[l] && nums[mid]>nums[r])
+            if(nums[mid]>=nums[l])
                 l = mid+1;
             else
-                l = mid;
+                r = mid;
         }
 
         return 0;
