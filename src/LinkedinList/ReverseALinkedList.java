@@ -25,6 +25,6 @@ public class ReverseALinkedList {
             head = temp;
         }
 
-        return head;
+        return prev;
     }
 }
