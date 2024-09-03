@@ -17,6 +17,6 @@ public class ReverseALinkedList {
             head = temp;
         }
 
-        return prev;
+        return prev; //because head will be pointing to null (last value of original list)
     }
 }
