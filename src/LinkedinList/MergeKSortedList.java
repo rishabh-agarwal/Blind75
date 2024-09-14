@@ -1,7 +1,5 @@
 package LinkedinList;
 
-import java.util.List;
-
 /**
  * Leetcode: 23
  **/
