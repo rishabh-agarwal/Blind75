@@ -1,7 +1,5 @@
 package LinkedinList;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,27 +7,40 @@ import java.util.List;
  **/
 public class MergeKSortedList {
     public ListNode mergeKLists(ListNode[] lists) {
-        List<Integer> nodeList = new ArrayList<>();
+        int size = lists.length;
+        int interval = 1;
 
-        // Traverse each linked list and collect all node values
-        for (ListNode node : lists) {
-            while (node != null) {
-                nodeList.add(node.val);
-                node = node.next;
+        while(interval < size){
+            for(int i=0; i<size-interval; i+=2 * interval){
+                lists[i] = merge(lists[i], lists[i+interval]);
             }
+            interval *=2;
         }
 
-        // Sort all collected values
-        Collections.sort(nodeList);
+        return size>0?lists[0] : null;
+    }
 
-        // Create a new linked list from the sorted values
-        ListNode head = new ListNode(0); // Dummy node
-        ListNode curr = head;
-        for (int val : nodeList) {
-            curr.next = new ListNode(val);
+    private ListNode merge(ListNode l1, ListNode l2){
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+
+        while(l1 != null && l2!=null){
+            if(l1.val <= l2.val){
+                curr.next = l1;
+                l1 = l1.next;
+            }else {
+                curr.next = l2;
+                l2 = l2.next;
+            }
             curr = curr.next;
         }
 
-        return head.next; // Return the head of the merged linked list
+        if(l1 !=null){
+            curr.next = l1;
+        }else {
+            curr.next = l2;
+        }
+
+        return dummy.next;
     }
 }
